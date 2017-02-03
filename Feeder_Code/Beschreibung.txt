@@ -8,6 +8,15 @@ clock:      48 MHz
 package:    LQFP32
 
 
+Hardwareaufbau:
+* MCU
+* Schrittmotortreiber mit A4988 (fertig kaufen)
+* WS2812B zur Signalisierung
+* Micromatch 10p Stecker (SWD, Debug)
+* Wannenstecker 10p (Com und Strom mit Backplane)
+* Schrittmotor mit Getriebe
+* Reflexkoppler für Indexerkennung pro Umdrehung
+
 
 INPUTS:
 * Reflexkoppler-Fototransistor
@@ -32,5 +41,8 @@ OUTPUTS:
 
 KOMMUNIKATION:
 * SWD
-* I2C
+* CAN
 * UART (Debug auf SWD-Stecker)
+
+
+CONFIG:
