@@ -1,0 +1,36 @@
+Beschreibung der GPIOs und ihrer Funktionen am Mikrocontroller
+
+
+mcu:        STM32F030K6T6
+flash:      32 kB
+ram:        4 kB
+clock:      48 MHz
+package:    LQFP32
+
+
+
+INPUTS:
+* Reflexkoppler-Fototransistor
+* ADC für 24V Power
+* ADC für Schrittmotorsollstrom
+* DS18B20 Thermofühler für Schrittmotortreiber
+
+
+OUTPUTS:
+* WS2812B Signalisierungslampe
+* Schrittmotor
+  * Step
+  * Direction
+  * DriveEnable
+  * DriveSleep
+  * DriveReset
+  * Microstepping Bit 1
+  * Microstepping Bit 2
+  * Microstepping Bit 3
+* Reflexkoppler-LED
+
+
+KOMMUNIKATION:
+* SWD
+* I2C
+* UART (Debug auf SWD-Stecker)
