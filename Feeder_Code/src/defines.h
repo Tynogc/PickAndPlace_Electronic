@@ -4,36 +4,35 @@
 
 
 // Schrittmotortreiber
-#define STEP_DRV_PORT
-#define STEP_PIN
-#define DIR_PIN
-#define DRIVE_EN
-#define DRIVE_SLP
-#define DRIVE_RST
-#define DRIVE_MS_1
-#define DRIVE_MS_2
-#define DRIVE_MS_3
+#define DRIVE_PORT GPIOA
+#define DRIVE_STEP GPIO1
+#define DRIVE_DIR GPIO2
+#define DRIVE_EN GPIO3
+#define DRIVE_SLP GPIO4
+#define DRIVE_RST GPIO5
+#define DRIVE_MS_1 GPIO6
+#define DRIVE_MS_2 GPIO8
+#define DRIVE_MS_3 GPIO12
 
-#define MICROSTEPPING_NONE 0
-#define MICROSTEPPING_HALF 1
-#define MICROSTEPPING_QUARTER 2
-#define MICROSTEPPING_EIGHT 3
-#define MICROSTEPPING_SIXTEENTH 7
-#define DEFAULT_MICROSTEPPING 0
-#define STEPS_PER_DEGREE 100
+#define MICROSTEPPING_NONE        0
+#define MICROSTEPPING_HALF        1
+#define MICROSTEPPING_QUARTER     2
+#define MICROSTEPPING_EIGHT       3
+#define MICROSTEPPING_SIXTEENTH   7
+#define STEPS_PER_DEGREE          100
 #define DEFAULT_VMAX // °/s
 #define DEFAULT_A // °/s²
 #define DEFAULT_J // °/s³
 
 // WS2812
 #define WS2812_PORT GPIOA
-#define WS2812_PIN  GPIO7
+#define WS2812_PIN  GPIO12
 
 // Reflexkoppler
-#define REFLEX_LED_PORT
-#define REFLEX_LED_PIN
-#define REFLEX_INPUT_PORT
-#define REFLEX_INPUT_PIN
+#define REFLEX_LED_PORT GPIOA
+#define REFLEX_LED_PIN GPIO10
+#define REFLEX_INPUT_PORT GPIOA
+#define REFLEX_INPUT_PIN GPIO11
 
 // ADCs
 #define ADC_POWERVCC

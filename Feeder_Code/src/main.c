@@ -25,7 +25,6 @@
 #include <libopencm3/cm3/nvic.h>
 #include <libopencm3/stm32/timer.h>
 #include <libopencm3/stm32/usart.h>
-//#include <libopencm3/usb/usbd.h>
 //#include <libopencm3/usb/cdc.h>
 #include <stdio.h>
 #include <errno.h>
@@ -34,13 +33,35 @@
 #include "defines.h"
 
 // maximum is at about 4000
-#define LED_COUNT 0x1
-// minimum ID offset is 0x100 (first ID byte mustn't be 0x00)
-#define ID_OFFSET 0xA000
+#define LED_COUNT 1
 
-int _write(int file, char *ptr, int len);
+//int _write(int file, char *ptr, int len);
 
-static void clock_setup(void)
+static void gpioInit (void) {
+	// blaue und grüne LED
+	gpio_mode_setup (GPIOC, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, GPIO8 | GPIO9);
+
+	// taster
+	gpio_mode_setup (GPIOA, GPIO_MODE_INPUT, GPIO_PUPD_PULLDOWN, GPIO0);
+
+	// Schrittmotortreiber
+	gpio_mode_setup (DRIVE_PORT, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE,
+		DRIVE_STEP | DRIVE_DIR | DRIVE_EN | DRIVE_SLP | DRIVE_RST | DRIVE_MS_1 |
+		DRIVE_MS_2 | DRIVE_MS_3);
+	gpio_set(DRIVE_PORT, DRIVE_EN); // Endstufe aus.
+
+	// WS2812
+	gpio_mode_setup(WS2812_PORT, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, WS2812_PIN);
+
+	// Reflexkoppler-LED
+	gpio_mode_setup(REFLEX_LED_PORT, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, REFLEX_LED_PIN);
+
+	// Reflexkoppler-Fototransistor
+	gpio_mode_setup(REFLEX_INPUT_PORT, GPIO_MODE_INPUT, GPIO_PUPD_PULLUP, REFLEX_INPUT_PIN);
+
+}
+
+static void clockInit (void)
 {
 	rcc_clock_setup_in_hsi_out_48mhz();
 
@@ -54,32 +75,30 @@ static void clock_setup(void)
 	/* Enable DMA1 clock */
 	rcc_periph_clock_enable(RCC_DMA);
 
-	rcc_periph_clock_enable(RCC_USART2);
+	rcc_periph_clock_enable(RCC_USART1);
 }
 
-static void uart_setup(void) {
-	/* Enable the USART3 interrupt. */
-//	nvic_enable_irq(NVIC_USART3_IRQ);
+static void uart_setup (void) {
 
-	/* setup GPIO: tx on PB10, rx on PB11 */
-	//gpio_set_mode(GPIOB, GPIO_MODE_OUTPUT_50_MHZ,
-	//	GPIO_CNF_OUTPUT_ALTFN_PUSHPULL, GPIO_USART3_TX);
-	gpio_set_af(GPIOA, GPIO_AF2, GPIO15);
-//	gpio_mode_setup(GPIOA, GPIO_MODE_INPUT, GPIO_MODE_AF, GPIO_USART2_RX);
+	// setup GPIO: tx on PB10, rx on PB11
+	gpio_mode_setup(GPIOA, GPIO_MODE_AF, GPIO_PUPD_NONE, GPIO9);
+	gpio_mode_setup(GPIOA, GPIO_MODE_AF, GPIO_PUPD_NONE, GPIO10);
+	gpio_set_af(GPIOA, GPIO_AF1, GPIO9); // _TX
+	gpio_set_af(GPIOA, GPIO_AF1, GPIO10); // _RX
 
-        /* Setup UART parameters. */
-	usart_set_baudrate(USART2, 115200);
-	usart_set_databits(USART2, 8);
-	usart_set_stopbits(USART2, 1);
-	usart_set_parity(USART2, USART_PARITY_NONE);
-	usart_set_flow_control(USART2, USART_FLOWCONTROL_NONE);
-	usart_set_mode(USART2, USART_MODE_RX); // no tx for now
+  // Setup UART parameters.
+	usart_disable(USART1);
+	usart_set_baudrate(USART1, 115200);
+	usart_set_databits(USART1, 8);
+	usart_set_stopbits(USART1, 1);
+	usart_set_parity(USART1, USART_PARITY_NONE);
+	usart_set_flow_control(USART1, USART_FLOWCONTROL_NONE);
+	usart_set_mode(USART1, USART_MODE_TX);
 
 	/* Enable USART3 Receive interrupt. */
-	USART_CR1(USART2) |= USART_CR1_RXNEIE;
+	//USART_CR1(USART2) |= USART_CR1_RXNEIE;
 
-	/* Finally enable the USART. */
-	usart_enable(USART2);
+	usart_enable(USART1);
 }
 
 #define TICK_NS (1000/48)
@@ -95,14 +114,16 @@ static volatile uint32_t led_data[LED_COUNT];
 static volatile uint32_t led_cur = 0;
 
 static void pwm_setup(void) {
-	/* Configure GPIOs: OUT=PA7 */
-	gpio_set_output_options(GPIOA, GPIO_AF2, GPIO_OSPEED_HIGH, GPIO6);
+	// Configure GPIOs: OUT = PA7
+	gpio_mode_setup(GPIOA, GPIO_MODE_AF, GPIO_PUPD_NONE, GPIO7);
+	gpio_set_af(GPIOA, GPIO_AF1, GPIO7);
+	gpio_set_output_options(GPIOA, GPIO_OTYPE_PP, GPIO_OSPEED_HIGH, GPIO7);
 
 	timer_reset(TIM3);
 
 	timer_set_mode(TIM3, TIM_CR1_CKD_CK_INT, TIM_CR1_CMS_EDGE, TIM_CR1_DIR_UP);
-
 	timer_disable_oc_output(TIM3, TIM_OC2);
+
 	timer_set_oc_mode(TIM3, TIM_OC2, TIM_OCM_PWM1);
 	timer_disable_oc_clear(TIM3, TIM_OC2);
 	timer_set_oc_value(TIM3, TIM_OC2, 0);
@@ -118,6 +139,35 @@ static void pwm_setup(void) {
 	timer_set_period(TIM3, WSP);
 
 	timer_enable_counter(TIM3);
+}
+
+void stepperInit (uint8_t microstepping) {
+	gpio_clear(DRIVE_PORT, DRIVE_MS_1 | DRIVE_MS_2 | DRIVE_MS_3);
+
+	switch (microstepping) {
+		case MICROSTEPPING_NONE:
+			microstepping = 1;
+			break;
+		case MICROSTEPPING_HALF:
+			gpio_set(DRIVE_PORT, DRIVE_MS_1);
+			microstepping = 2;
+			break;
+		case MICROSTEPPING_QUARTER:
+			gpio_set(DRIVE_PORT, DRIVE_MS_2);
+			microstepping = 4;
+			break;
+		case MICROSTEPPING_EIGHT:
+			gpio_set(DRIVE_PORT, DRIVE_MS_1 | DRIVE_MS_2);
+			microstepping = 8;
+			break;
+		case MICROSTEPPING_SIXTEENTH:
+			gpio_set(DRIVE_PORT, DRIVE_MS_1 | DRIVE_MS_2 | DRIVE_MS_3);
+			microstepping = 16;
+			break;
+		default:
+			microstepping = 1; // nur Vollschritte...
+	}
+	gpio_set(DRIVE_PORT, DRIVE_RST);
 }
 
 static void populate_dma_data(uint8_t *dma_data_bank) {
@@ -138,92 +188,21 @@ static void populate_dma_data(uint8_t *dma_data_bank) {
 	}
 }
 
-// Befehl der über den UART reingekommen ist
-static void handle_cmd(uint8_t cmd) {
-	static enum {
-		STATE_WAITING,
-		STATE_GOT_ID1,
-		STATE_GOT_ID2,
-		STATE_GOT_COL1,
-		STATE_GOT_COL2,
-		STATE_GOT_COL3,
-		STATE_GOT_COL4,
-		STATE_GOT_COL5,
-	} cmd_state = STATE_WAITING;
-	static uint16_t id = 0;
-	static uint16_t col_r = 0;
-	static uint16_t col_g = 0;
-	static uint16_t col_b = 0;
-
-	gpio_toggle(GPIOC, GPIO8);	/* LED on/off */
-
-	switch(cmd_state) {
-	case STATE_WAITING:
-		id = cmd;
-		/* send a bunch of 0x00 to re-sync protocol */
-		if(id != 0x00)
-			cmd_state = STATE_GOT_ID1;
-		break;
-	case STATE_GOT_ID1:
-		id = (id << 8) + cmd;
-		cmd_state = STATE_GOT_ID2;
-		break;
-	case STATE_GOT_ID2:
-		col_r = cmd;
-		cmd_state = STATE_GOT_COL1;
-		break;
-	case STATE_GOT_COL1:
-		cmd_state = STATE_GOT_COL2;
-		break;
-	case STATE_GOT_COL2:
-		col_g = cmd;
-		cmd_state = STATE_GOT_COL3;
-		break;
-	case STATE_GOT_COL3:
-		cmd_state = STATE_GOT_COL4;
-		break;
-	case STATE_GOT_COL4:
-		col_b = cmd;
-		cmd_state = STATE_GOT_COL5;
-		break;
-	case STATE_GOT_COL5:
-		id -= ID_OFFSET;
-		if(id < LED_COUNT)
-			led_data[id] = (col_g << 16) | (col_r << 8) | (col_b);
-		cmd_state = STATE_WAITING;
-		break;
-	}
-}
-
-void usart3_isr(void)
-{
-        /* Check if we were called because of RXNE. */
-        //if ((USART_SR(USART2) & USART_SR_RXNE) != 0) {
-                handle_cmd(usart_recv(USART2));
-        //}
-}
-
 
 static void dma_int_enable(void) {
-	/* SPI1 TX on DMA1 Channel 3 */
+	// SPI1 TX on DMA1 Channel 3
 	nvic_set_priority(NVIC_DMA1_CHANNEL2_3_IRQ, 0);
 	nvic_enable_irq(NVIC_DMA1_CHANNEL2_3_IRQ);
 }
-
-/* Not used in this example
-static void dma_int_disable(void) {
- 	nvic_disable_irq(NVIC_DMA1_CHANNEL3_IRQ);
-}
-*/
 
 static int timer_dma(uint8_t *tx_buf, int tx_len)
 {
 	dma_int_enable();
 
-	/* Reset DMA channels*/
+	// Reset DMA channels
 	dma_channel_reset(DMA1, DMA_CHANNEL3);
 
-	/* Set up tx dma */
+	// Set up tx dma
 	dma_set_peripheral_address(DMA1, DMA_CHANNEL3, (uint32_t)&TIM_CCR2(TIM3));
 	dma_set_memory_address(DMA1, DMA_CHANNEL3, (uint32_t)tx_buf);
 	dma_set_number_of_data(DMA1, DMA_CHANNEL3, tx_len);
@@ -241,7 +220,7 @@ static int timer_dma(uint8_t *tx_buf, int tx_len)
 	return 0;
 }
 
-/* SPI transmit completed with DMA */
+// SPI transmit completed with DMA
 void dma1_channel3_isr(void)
 {
 	if ((DMA1_ISR & DMA_ISR_TCIF3) != 0) {
@@ -256,42 +235,46 @@ void dma1_channel3_isr(void)
 
 
 int main(void) {
-
-	clock_setup();
-
-	// blaue LED
-	gpio_mode_setup (GPIOC, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, GPIO8);
-
-	// taster
-	gpio_mode_setup (GPIOA, GPIO_MODE_INPUT, GPIO_PUPD_PULLDOWN, GPIO0);
-
-	// DEBUG COM
+	clockInit();
+	gpioInit();
 	uart_setup ();
+	usart_send_blocking(USART1, 'x');
 
 	memset(dma_data, 0, DMA_SIZE);
 	memset((void*)led_data, 0, LED_COUNT*sizeof(*led_data));
-	//populate_dma_data(dma_data);
-	//populate_dma_data(&dma_data[DMA_BANK_SIZE]);
-
+	populate_dma_data(dma_data);
+	populate_dma_data(&dma_data[DMA_BANK_SIZE]);
+	usart_send_blocking(USART1, 'A');
 
 	timer_dma (dma_data, DMA_SIZE);
+	usart_send_blocking(USART1, 'B');
+
 	pwm_setup ();
+	usart_send_blocking(USART1, 'C');
 
 	// boot vollständig.
-	gpio_set (GPIOC, GPIO8);
+	gpio_set(GPIOC, GPIO8);
+	usart_send_blocking(USART1, 'D');
 
+	// ein paar Variablen
+	// Achtung: fahrstrecke ist unabhängig vom aktuellen Mikrosteppinglevel!
+	int fahrstrecke = 0; // in Schritten
+	uint8_t istReferenziert = 0;
+	uint16_t powerVcc = 0;
+	uint16_t motorstrom = 0;
+	uint16_t drvTemperatur = 0;
+	uint32_t ledfarbe = 0x00101010; // Modus-R-G-B (32 Bit)
 
 	while (1) {
-
 		// kleiner Test: LED an- und abstellbar.
 		if (gpio_get(GPIOA, GPIO0) == 1) {
-			gpio_toggle (GPIOC, GPIO8);
+			gpio_toggle (GPIOC, GPIO9);
+			usart_send_blocking(USART1, 'E');
+			led_data[0] = (led_data[0] & 0xFFFF0000) | ((led_data[0] & 0xFF00)+0x1000);
 			while (gpio_get(GPIOA, GPIO0));
 			for (volatile int i=0; i<1000000; i++) {
 				; // nix.
 			}
 		}
-
-		//__asm__("wfe");
 	}
 }

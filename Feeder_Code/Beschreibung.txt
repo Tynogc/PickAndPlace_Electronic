@@ -1,7 +1,7 @@
 Beschreibung der GPIOs und ihrer Funktionen am Mikrocontroller
 
 
-mcu:        STM32F030K6T6
+mcu:        STM32F031K6T6 (jetzt auch mit CAN)
 flash:      32 kB
 ram:        4 kB
 clock:      48 MHz
