@@ -1,0 +1,54 @@
+Erklärung zur Kinematik des Schrittmotors
+
+1. 	Regelung von Ort (x), Geschwindigkeit v = (d(x)/dt), Beschleunigung a = (d²(x)/dt²) und Ruck j = (d³(x)/dt³)
+2. 	Werte für maximale Geschwindigkeit, Beschleunigung und Ruck änderbar
+3. 	Berechnung der Fahrrampe nach diesen Werten und dem neuen Soll-Ort
+4. 	aktueller Ort als 64 bit int (signed) angegeben und jederzeit nullbar
+5. 	Ort-Sollwert (relativ oder absolut) auch als 64 bit signed int
+6.	Auflösung von Ort Ist und Sollwert ist (Motorauflösung/größter Microsteppingwert)
+		Hier: 360° / 48 Schritte / 64 (Getriebe) / 16 (Microstepping) = 49152 Schritte pro Umdrehung 
+7. 	es kann G0 oder G1 gefahren werden, also mit V=Vmax oder V=Vsoll
+8. 	von außen wird in Winkel gefahren (Grad mit maximal drei Nachkommastellen)
+9. 	jeder Geschwindigkeitsgraph ist symmetrisch
+10. Geschwindigkeit ist in Schritten/Sekunde definiert und so weiter.
+
+
+Ablauf einer Fahrt:
+
+Vorbemerkungen:
+Anzahl Schritte bis Vmax gesucht!
+Bei stehendem Motor sind x=const und v=a=j=0
+
+1. Berechne Schrittanzahl zu fahren aus Eingabewert und Einstellungen:
+(signed)n = ((signed)Sollweg(Grad) * (unsigned)Schritte/Grad ) / 360
+dabei ist: Schritte/Grad = (Motorschritte/Umdrehung * Getriebekonstante * microstepping)
+
+2. Losfahren: j springt von 0 auf j_soll, damit beginnen a, v, und x monoton zu steigen oder zu fallen (Vorzeichen!!)
+Formelsatz: 
+// x = x_0 + v*t + a*t² + j*t³
+v = v_0 + a*t + j*t²
+a = a_0 + j*t
+j = j_0
+
+schritte von jetzt bis ziel bei bekanntem v_aktuell und maximalem a
+delta(v)²/(2*a) + v_ziel*delta(v)/a
+dabei wird davon ausgegangen, dass a_brems == a_beschleunigen
+
+Zeit bis zum nächsten Schritt ist aus 1/v_aktuell zu berechnen. (und dann an einen TimerCounter zu geben... )
+Tastgrad 50%, Veränderung des TOP des Timers und dann COMPARE auf 0,5 * TOP
+
+-> Formel für x wird nicht gebraucht, da nach jedem Schritt direkt x_ist hochgezählt wird.
+
+Immer wenn ein Wert seinen Maximalwert erreicht wird er auf diesem Maximalwert festgehalten (-> ?-Operator) 
+beim Erreichen der halben Stecke (x_o + n/2) wird entweder mit aktueller Geschwindigkeit noch EIN Schritt gemacht
+(ungerade Anzahl Schritte zu fahren) oder j auf -j umgedreht. Bei letzterem wird der Motor wieder langsamer, bis er seine
+Sollposition erreicht.
+Beim Erreichen des Sollwertes wird der je eins höherwertige Wert auf 0 gesetzt, also bei a = a_soll -> j = 0 gesetzt.
+
+Da alle IST-Werte für v und a Brüche sind, werden sie in Festkomma (signed 32 bit breit, fixed 4 Nachkommastellen) verarbeitet.
+Damit stehen noch 0-200e3 als mögliche Werte zur Verfügung. So kann auch leicht mit n > Sollwert gearbeitet werden.
+
+Wenn der Motor bei minimaler Geschwindigkeit noch nicht den Soll-Endwert erreicht hat, wird der letzte Puls widerholt, bis
+der Motor seinen End-Sollstand erreicht hat.
+
+Wellenform (Rechteck) für den Treiber: variable Frequenz, Tastgrad 50% fest.
