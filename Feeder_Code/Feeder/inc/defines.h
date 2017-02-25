@@ -5,14 +5,14 @@
 
 // Schrittmotortreiber
 #define DRIVE_PORT GPIOA
-#define DRIVE_STEP GPIO1
-#define DRIVE_DIR GPIO7
-#define DRIVE_EN GPIO3
-#define DRIVE_SLP GPIO4
-#define DRIVE_RST GPIO5
-#define DRIVE_MS_1 GPIO6
-#define DRIVE_MS_2 GPIO8
-#define DRIVE_MS_3 GPIO12
+#define DRIVE_STEP GPIO2
+#define DRIVE_DIR GPIO0
+#define DRIVE_EN GPIO1
+#define DRIVE_SLP GPIO3
+#define DRIVE_RST GPIO4
+#define DRIVE_MS_1 GPIO5
+#define DRIVE_MS_2 GPIO6
+#define DRIVE_MS_3 GPIO7
 
 #define MICROSTEPPING_NONE        0
 #define MICROSTEPPING_HALF        1
