@@ -333,7 +333,7 @@ Text Label 4100 5550 0    60   ~ 0
 WS2812_Data
 Wire Wire Line
 	4950 5550 4100 5550
-Text Label 12200 5450 2    60   ~ 0
+Text Label 4100 6250 0    60   ~ 0
 Dir
 Text Label 12200 4950 2    60   ~ 0
 Step
@@ -341,15 +341,15 @@ Wire Wire Line
 	11350 5450 12200 5450
 Wire Wire Line
 	12200 4950 11350 4950
-Text Label 12200 5650 2    60   ~ 0
+Text Label 4100 5950 0    60   ~ 0
 ~Sleep
-Text Label 12200 5750 2    60   ~ 0
-~Reset
 Text Label 4100 5850 0    60   ~ 0
-MS3
+~Reset
 Text Label 4100 5750 0    60   ~ 0
-MS2
+MS3
 Text Label 12200 6250 2    60   ~ 0
+MS2
+Text Label 11700 7400 2    60   ~ 0
 MS1
 Text Label 12200 5550 2    60   ~ 0
 ~Enable
@@ -1560,9 +1560,9 @@ F 3 "" H -1550 150 50  0000 C CNN
 	1    1500 7400
 	0    1    1    0   
 $EndComp
-Text Label 4100 5950 0    60   ~ 0
+Text Label 12200 6900 2    60   ~ 0
 SvenButton1
-Text Label 4100 6250 0    60   ~ 0
+Text Label 12200 6800 2    60   ~ 0
 SvenButton2
 Text Label 2800 6900 2    60   ~ 0
 SvenButton1

@@ -135,10 +135,10 @@ void uartSendBlkDatLen(uint32_t timer, const char* data, uint16_t length) {
 }
 
 void stepper_timer_setup(void) {
-	// Verwende Timer 2 - Kanal 3 DMA1-Ch1 - Ausgang PB10 - AF2
-	gpio_mode_setup(GPIOB, GPIO_MODE_AF, GPIO_PUPD_NONE, GPIO10);
-	gpio_set_af(GPIOB, GPIO_AF2, GPIO10);
-	gpio_set_output_options(GPIOB, GPIO_OTYPE_PP, GPIO_OSPEED_HIGH, GPIO10);
+	// Verwende Timer 2 - Kanal 4 DMA1-Ch4 - Ausgang PB11 - AF2
+	gpio_mode_setup(GPIOB, GPIO_MODE_AF, GPIO_PUPD_NONE, GPIO11);
+	gpio_set_af(GPIOB, GPIO_AF2, GPIO11);
+	gpio_set_output_options(GPIOB, GPIO_OTYPE_PP, GPIO_OSPEED_HIGH, GPIO11);
 
 	timer_reset(TIM2);
 
@@ -151,12 +151,12 @@ void stepper_timer_setup(void) {
 	timer_disable_oc_output(TIM2, TIM_OC3);
 	timer_disable_oc_output(TIM2, TIM_OC4);
 
-	timer_set_oc_mode(TIM2, TIM_OC3, TIM_OCM_TOGGLE);
-	timer_disable_oc_clear(TIM2, TIM_OC3);
+	timer_set_oc_mode(TIM2, TIM_OC4, TIM_OCM_TOGGLE);
+	timer_disable_oc_clear(TIM2, TIM_OC4);
 	//timer_enable_oc_preload(TIM2, TIM_OC3);
-	timer_set_oc_value(TIM2, TIM_OC3, 0);
-	timer_set_oc_polarity_high(TIM2, TIM_OC3);
-	timer_enable_oc_output(TIM2, TIM_OC3);
+	timer_set_oc_value(TIM2, TIM_OC4, 0);
+	timer_set_oc_polarity_high(TIM2, TIM_OC4);
+	timer_enable_oc_output(TIM2, TIM_OC4);
 
 	//timer_enable_preload(TIM2);
 	timer_set_counter(TIM2, 0);
@@ -169,29 +169,29 @@ void stepper_timer_setup(void) {
 
 static int stepper_dma(uint16_t *tx_buf, int tx_len) {
 
-   dma_disable_channel(DMA1, DMA_CHANNEL1);
+   dma_disable_channel(DMA1, DMA_CHANNEL4);
 
-   nvic_set_priority(NVIC_DMA1_CHANNEL1_IRQ, 0);
-   nvic_enable_irq(NVIC_DMA1_CHANNEL1_IRQ);
+   nvic_set_priority(NVIC_DMA1_CHANNEL4_5_IRQ, 0);
+   nvic_enable_irq(NVIC_DMA1_CHANNEL4_5_IRQ);
 
    // Reset DMA channels
-   dma_channel_reset(DMA1, DMA_CHANNEL1);
+   dma_channel_reset(DMA1, DMA_CHANNEL4);
 
    // Set up tx dma
-   dma_set_peripheral_address(DMA1, DMA_CHANNEL1, (uint32_t) &TIM2_CCR3);
-   dma_set_memory_address(DMA1, DMA_CHANNEL1, (uint32_t) tx_buf);
-   dma_set_number_of_data(DMA1, DMA_CHANNEL1, tx_len);
-   dma_set_read_from_memory(DMA1, DMA_CHANNEL1);
-   dma_enable_memory_increment_mode(DMA1, DMA_CHANNEL1);
-   dma_set_peripheral_size(DMA1, DMA_CHANNEL1, DMA_CCR_PSIZE_32BIT);
-   dma_set_memory_size(DMA1, DMA_CHANNEL1, DMA_CCR_MSIZE_16BIT);
-   dma_set_priority(DMA1, DMA_CHANNEL1, DMA_CCR_PL_HIGH);
+   dma_set_peripheral_address(DMA1, DMA_CHANNEL4, (uint32_t) &TIM2_CCR4);
+   dma_set_memory_address(DMA1, DMA_CHANNEL4, (uint32_t) tx_buf);
+   dma_set_number_of_data(DMA1, DMA_CHANNEL4, tx_len);
+   dma_set_read_from_memory(DMA1, DMA_CHANNEL4);
+   dma_enable_memory_increment_mode(DMA1, DMA_CHANNEL4);
+   dma_set_peripheral_size(DMA1, DMA_CHANNEL4, DMA_CCR_PSIZE_32BIT);
+   dma_set_memory_size(DMA1, DMA_CHANNEL4, DMA_CCR_MSIZE_16BIT);
+   dma_set_priority(DMA1, DMA_CHANNEL4, DMA_CCR_PL_HIGH);
 
-   dma_enable_circular_mode(DMA1, DMA_CHANNEL1);
-   dma_enable_transfer_complete_interrupt(DMA1, DMA_CHANNEL1);
-   dma_enable_half_transfer_interrupt(DMA1, DMA_CHANNEL1);
-   dma_enable_transfer_error_interrupt(DMA1, DMA_CHANNEL1);
-   dma_enable_channel(DMA1, DMA_CHANNEL1);
+   dma_enable_circular_mode(DMA1, DMA_CHANNEL4);
+   dma_enable_transfer_complete_interrupt(DMA1, DMA_CHANNEL4);
+   dma_enable_half_transfer_interrupt(DMA1, DMA_CHANNEL4);
+   dma_enable_transfer_error_interrupt(DMA1, DMA_CHANNEL4);
+   dma_enable_channel(DMA1, DMA_CHANNEL4);
    return 0;
 }
 
@@ -222,7 +222,7 @@ void pwm_setup(void) {
 
    timer_enable_preload(TIM3);
    timer_set_counter(TIM3, 0);
-   __asm__("DSB");
+
    timer_enable_counter(TIM3);
 
    timer_enable_irq(TIM3, TIM_DIER_UDE); // Update DMA request
@@ -326,6 +326,9 @@ static int timer_dma(uint8_t *tx_buf, int tx_len) {
    return 0;
 }
 
+/*void dma1_channel1_isr(void) {
+	;
+}*/
 
 void dma1_channel2_3_isr(void) {
    if (dma_get_interrupt_flag(DMA1, DMA_CHANNEL3, DMA_TCIF)) { // dma Puffer leer
@@ -342,27 +345,27 @@ void dma1_channel2_3_isr(void) {
    }
 }
 
-void dma1_channel1_isr(void) {
-   if (dma_get_interrupt_flag(DMA1, DMA_CHANNEL1, DMA_TCIF)) { // dma Puffer leer
-	   dma_clear_interrupt_flags(DMA1, DMA_CHANNEL1, DMA_TCIF);
+void dma1_channel4_5_isr(void) {
+   if (dma_get_interrupt_flag(DMA1, DMA_CHANNEL4, DMA_TCIF)) { // dma Puffer leer
+	   dma_clear_interrupt_flags(DMA1, DMA_CHANNEL4, DMA_TCIF);
 	   gpio_set(GPIOC, GPIO8);
 	   populate_stepper_data(&stepper_data[DMA_STEPPER_BANK_SIZE]);
 	   gpio_clear(GPIOC, GPIO8);
-	   if (dma_get_interrupt_flag(DMA1, DMA_CHANNEL1, DMA_HTIF)){
+	   if (dma_get_interrupt_flag(DMA1, DMA_CHANNEL4, DMA_HTIF)){
 		   __asm__("BKPT #01");
 	   }
    }
-   if (dma_get_interrupt_flag(DMA1, DMA_CHANNEL1, DMA_HTIF)) { // dma Puffer halbleer
-	   dma_clear_interrupt_flags(DMA1, DMA_CHANNEL1, DMA_HTIF);
+   if (dma_get_interrupt_flag(DMA1, DMA_CHANNEL4, DMA_HTIF)) { // dma Puffer halbleer
+	   dma_clear_interrupt_flags(DMA1, DMA_CHANNEL4, DMA_HTIF);
 	   gpio_set(GPIOC, GPIO9);
 	   populate_stepper_data(stepper_data);
 	   gpio_clear(GPIOC, GPIO9);
-	   if (dma_get_interrupt_flag(DMA1, DMA_CHANNEL1, DMA_TCIF)){
+	   if (dma_get_interrupt_flag(DMA1, DMA_CHANNEL4, DMA_TCIF)){
 		   __asm__("BKPT #01");
 	   }
    }
-   if (dma_get_interrupt_flag(DMA1, DMA_CHANNEL1, DMA_TEIF)) { // dma Übertragungsfehler
-	   dma_clear_interrupt_flags(DMA1, DMA_CHANNEL1, DMA_TEIF);
+   if (dma_get_interrupt_flag(DMA1, DMA_CHANNEL4, DMA_TEIF)) { // dma Übertragungsfehler
+	   dma_clear_interrupt_flags(DMA1, DMA_CHANNEL4, DMA_TEIF);
 	   uartSendBlkDat(USART1, "Error in DMA ISR Channel 1\r\n");
    }
 }
