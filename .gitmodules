@@ -1,0 +1,3 @@
+[submodule "Feeder_Code/smartFeeder_Cproject"]
+	path = Feeder_Code/smartFeeder_Cproject
+	url = git@phoerauf.de:VT7/smartFeeder_Cproject.git
