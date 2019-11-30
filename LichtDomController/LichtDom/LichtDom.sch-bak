@@ -1512,4 +1512,96 @@ Wire Wire Line
 	5450 4400 5750 4400
 Wire Wire Line
 	5750 4300 5450 4300
+$Comp
+L Mechanical:Mounting_Hole MK105
+U 1 1 5DF0CFCD
+P 5750 3000
+F 0 "MK105" H 5850 3046 50  0000 L CNN
+F 1 "Mounting_Hole" H 5850 2955 50  0000 L CNN
+F 2 "MountingHole:MountingHole_3.2mm_M3_DIN965" H 5750 3000 50  0001 C CNN
+F 3 "" H 5750 3000 50  0001 C CNN
+	1    5750 3000
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:Mounting_Hole MK106
+U 1 1 5DF0D94C
+P 5750 3250
+F 0 "MK106" H 5850 3296 50  0000 L CNN
+F 1 "Mounting_Hole" H 5850 3205 50  0000 L CNN
+F 2 "MountingHole:MountingHole_3.2mm_M3_DIN965" H 5750 3250 50  0001 C CNN
+F 3 "" H 5750 3250 50  0001 C CNN
+	1    5750 3250
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:Mounting_Hole MK107
+U 1 1 5DF0DC9F
+P 5750 3500
+F 0 "MK107" H 5850 3546 50  0000 L CNN
+F 1 "Mounting_Hole" H 5850 3455 50  0000 L CNN
+F 2 "MountingHole:MountingHole_3.2mm_M3_DIN965" H 5750 3500 50  0001 C CNN
+F 3 "" H 5750 3500 50  0001 C CNN
+	1    5750 3500
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:Mounting_Hole MK108
+U 1 1 5DF0DF98
+P 5750 3750
+F 0 "MK108" H 5850 3796 50  0000 L CNN
+F 1 "Mounting_Hole" H 5850 3705 50  0000 L CNN
+F 2 "MountingHole:MountingHole_3.2mm_M3_DIN965" H 5750 3750 50  0001 C CNN
+F 3 "" H 5750 3750 50  0001 C CNN
+	1    5750 3750
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:Mounting_Hole MK103
+U 1 1 5DF10368
+P 5500 6500
+F 0 "MK103" H 5600 6546 50  0000 L CNN
+F 1 "Mounting_Hole" H 5600 6455 50  0000 L CNN
+F 2 "MountingHole:MountingHole_3.2mm_M3" H 5500 6500 50  0001 C CNN
+F 3 "" H 5500 6500 50  0001 C CNN
+	1    5500 6500
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:Mounting_Hole MK101
+U 1 1 5DF10374
+P 5500 6000
+F 0 "MK101" H 5600 6046 50  0000 L CNN
+F 1 "Mounting_Hole" H 5600 5955 50  0000 L CNN
+F 2 "MountingHole:MountingHole_3.2mm_M3" H 5500 6000 50  0001 C CNN
+F 3 "" H 5500 6000 50  0001 C CNN
+	1    5500 6000
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:Mounting_Hole MK102
+U 1 1 5DF10380
+P 5500 6250
+F 0 "MK102" H 5600 6296 50  0000 L CNN
+F 1 "Mounting_Hole" H 5600 6205 50  0000 L CNN
+F 2 "MountingHole:MountingHole_3.2mm_M3" H 5500 6250 50  0001 C CNN
+F 3 "" H 5500 6250 50  0001 C CNN
+	1    5500 6250
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:Mounting_Hole MK104
+U 1 1 5DF1038C
+P 5500 6750
+F 0 "MK104" H 5600 6796 50  0000 L CNN
+F 1 "Mounting_Hole" H 5600 6705 50  0000 L CNN
+F 2 "MountingHole:MountingHole_3.2mm_M3" H 5500 6750 50  0001 C CNN
+F 3 "" H 5500 6750 50  0001 C CNN
+	1    5500 6750
+	1    0    0    -1  
+$EndComp
+Text Notes 5500 5800 0    50   ~ 0
+Platinenanschlusslöcher
+Text Notes 5750 2800 0    50   ~ 0
+OLED-Montagelöcher
 $EndSCHEMATC

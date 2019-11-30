@@ -1,0 +1,7 @@
+(sym_lib_table
+  (lib (name Feeder-rescue)(type Legacy)(uri ${KIPRJMOD}/Feeder-rescue.lib)(options "")(descr ""))
+  (lib (name stm32)(type Legacy)(uri /home/philipp/Dokumente/dev/PhilippsKicadBauteile/Schaltplansymbole/stm32.lib)(options "")(descr ""))
+  (lib (name Resonator_3pins)(type Legacy)(uri /home/philipp/Dokumente/dev/PhilippsKicadBauteile/Schaltplansymbole/Resonator_3pins.lib)(options "")(descr ""))
+  (lib (name prog_sockets)(type Legacy)(uri /home/philipp/Dokumente/dev/PhilippsKicadBauteile/Schaltplansymbole/prog_sockets.lib)(options "")(descr ""))
+  (lib (name ph-diodes)(type Legacy)(uri /home/philipp/Dokumente/dev/PhilippsKicadBauteile/Schaltplansymbole/ph-diodes.lib)(options "")(descr ""))
+)
