@@ -1604,4 +1604,15 @@ Text Notes 5500 5800 0    50   ~ 0
 Platinenanschlusslöcher
 Text Notes 5750 2800 0    50   ~ 0
 OLED-Montagelöcher
+$Comp
+L power:+5V #PWR?
+U 1 1 5DE6E388
+P 6700 1200
+F 0 "#PWR?" H 6700 1050 50  0001 C CNN
+F 1 "+5V" H 6715 1373 50  0000 C CNN
+F 2 "" H 6700 1200 50  0001 C CNN
+F 3 "" H 6700 1200 50  0001 C CNN
+	1    6700 1200
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

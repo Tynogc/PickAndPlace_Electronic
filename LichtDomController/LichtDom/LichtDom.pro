@@ -1,4 +1,4 @@
-update=02.12.2019 18:54:35
+update=Di 03 Dez 2019 23:25:23 CET
 version=1
 last_client=kicad
 [general]
@@ -39,6 +39,8 @@ TrackWidth2=0.16
 TrackWidth3=0.2
 TrackWidth4=0.3
 TrackWidth5=0.5
+TrackWidth6=0.75
+TrackWidth7=1
 ViaDiameter1=0.8
 ViaDrill1=0.4
 ViaDiameter2=0.6
@@ -68,7 +70,7 @@ OthersTextSizeH=1
 OthersTextSizeThickness=0.15
 OthersTextItalic=0
 OthersTextUpright=0
-DimensionUnits=2
+DimensionUnits=0
 DimensionPrecision=1
 SolderMaskClearance=0.051
 SolderMaskMinWidth=0.15
