@@ -1,4 +1,4 @@
-(kicad_pcb (version 20191123) (host pcbnew "(5.99.0-467-g4d2e953f4)")
+(kicad_pcb (version 20191123) (host pcbnew "(5.99.0-490-gc7ce93e10)")
 
   (general
     (thickness 1.6)
@@ -80,8 +80,8 @@
     (aux_axis_origin 0 0)
     (visible_elements 7FFFFFFF)
     (pcbplotparams
-      (layerselection 0x00030_80000001)
-      (usegerberextensions false)
+      (layerselection 0x0103c_ffffffff)
+      (usegerberextensions true)
       (usegerberattributes false)
       (usegerberadvancedattributes false)
       (creategerberjobfile false)
@@ -97,15 +97,15 @@
       (psnegative false)
       (psa4output false)
       (plotreference true)
-      (plotvalue true)
+      (plotvalue false)
       (plotinvisibletext false)
       (padsonsilk false)
-      (subtractmaskfromsilk false)
+      (subtractmaskfromsilk true)
       (outputformat 1)
       (mirror false)
-      (drillshape 1)
+      (drillshape 0)
       (scaleselection 1)
-      (outputdirectory "")
+      (outputdirectory "factory/0_1/")
     )
   )
 
