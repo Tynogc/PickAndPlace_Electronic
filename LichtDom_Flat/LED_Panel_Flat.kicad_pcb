@@ -1,4 +1,4 @@
-(kicad_pcb (version 20191123) (host pcbnew "(5.99.0-588-g5c0656d97)")
+(kicad_pcb (version 20191123) (host pcbnew "(5.99.0-492-g30da2b31e)")
 
   (general
     (thickness 1.6)
@@ -75,8 +75,6 @@
       (silk_text_dims (size 1 1) (thickness 0.15))
       (other_layers_line_width 0.1)
       (other_layers_text_dims (size 1 1) (thickness 0.15))
-      (dimension_units 0)
-      (dimension_precision 1)
     )
     (pad_size 1.524 1.524)
     (pad_drill 0.762)
@@ -84,8 +82,8 @@
     (aux_axis_origin 0 0)
     (visible_elements 7FFFFFFF)
     (pcbplotparams
-      (layerselection 0x00030_80000001)
-      (usegerberextensions false)
+      (layerselection 0x010fc_ffffffff)
+      (usegerberextensions true)
       (usegerberattributes false)
       (usegerberadvancedattributes false)
       (creategerberjobfile false)
@@ -101,15 +99,15 @@
       (psnegative false)
       (psa4output false)
       (plotreference true)
-      (plotvalue true)
+      (plotvalue false)
       (plotinvisibletext false)
       (padsonsilk false)
-      (subtractmaskfromsilk false)
+      (subtractmaskfromsilk true)
       (outputformat 1)
       (mirror false)
-      (drillshape 1)
+      (drillshape 0)
       (scaleselection 1)
-      (outputdirectory "")
+      (outputdirectory "factory/0_1/")
     )
   )
 
@@ -269,7 +267,7 @@
       (net 29 "Net-(Q4-Pad1)"))
     (pad "2" smd rect (at 0.95 0 90) (size 0.7 1.3) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 22 "/CTRL_Green2"))
-    (model "${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0805_2012Metric.wrl"
+    (model "${KISYS3DMOD}/Resistors_SMD.3dshapes/R_0805.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -305,7 +303,7 @@
       (net 28 "Net-(Q3-Pad1)"))
     (pad "2" smd rect (at 0.95 0 180) (size 0.7 1.3) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 21 "/CTRL_Red2"))
-    (model "${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0805_2012Metric.wrl"
+    (model "${KISYS3DMOD}/Resistors_SMD.3dshapes/R_0805.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -341,7 +339,7 @@
       (net 27 "Net-(Q2-Pad1)"))
     (pad "2" smd rect (at 0.95 0 180) (size 0.7 1.3) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 25 "/CTRL_Green1"))
-    (model "${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0805_2012Metric.wrl"
+    (model "${KISYS3DMOD}/Resistors_SMD.3dshapes/R_0805.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -377,7 +375,7 @@
       (net 26 "Net-(Q1-Pad1)"))
     (pad "2" smd rect (at 0.95 0 270) (size 0.7 1.3) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 24 "/CTRL_Red1"))
-    (model "${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0805_2012Metric.wrl"
+    (model "${KISYS3DMOD}/Resistors_SMD.3dshapes/R_0805.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -413,7 +411,7 @@
       (net 23 "/VCC1"))
     (pad "2" smd rect (at 0.95 0 180) (size 0.7 1.3) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 32 "Net-(D8-Pad2)"))
-    (model "${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0805_2012Metric.wrl"
+    (model "${KISYS3DMOD}/Resistors_SMD.3dshapes/R_0805.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -449,7 +447,7 @@
       (net 23 "/VCC1"))
     (pad "2" smd rect (at 1.45 0 270) (size 0.9 1.7) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 30 "Net-(D7-Pad2)"))
-    (model "${KISYS3DMOD}/Resistor_SMD.3dshapes/R_1206_3216Metric.wrl"
+    (model "${KISYS3DMOD}/Resistors_SMD.3dshapes/R_1206.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -485,7 +483,7 @@
       (net 23 "/VCC1"))
     (pad "2" smd rect (at 0.95 0 180) (size 0.7 1.3) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 3 "Net-(D6-Pad2)"))
-    (model "${KISYS3DMOD}/Resistor_SMD.3dshapes/R_0805_2012Metric.wrl"
+    (model "${KISYS3DMOD}/Resistors_SMD.3dshapes/R_0805.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -521,7 +519,7 @@
       (net 23 "/VCC1"))
     (pad "2" smd rect (at 1.45 0 90) (size 0.9 1.7) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 2 "Net-(D5-Pad2)"))
-    (model "${KISYS3DMOD}/Resistor_SMD.3dshapes/R_1206_3216Metric.wrl"
+    (model "${KISYS3DMOD}/Resistors_SMD.3dshapes/R_1206.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -562,7 +560,7 @@
       (net 1 "/GND1"))
     (pad "3" smd rect (at 1 0) (size 0.9 0.8) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 18 "/Green_L2"))
-    (model "${KISYS3DMOD}/Package_TO_SOT_SMD.3dshapes/SOT-23.step"
+    (model "${KISYS3DMOD}/TO_SOT_Packages_SMD.3dshapes/SOT-23.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -603,7 +601,7 @@
       (net 1 "/GND1"))
     (pad "3" smd rect (at 1 0 270) (size 0.9 0.8) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 17 "/Red_L2"))
-    (model "${KISYS3DMOD}/Package_TO_SOT_SMD.3dshapes/SOT-23.step"
+    (model "${KISYS3DMOD}/TO_SOT_Packages_SMD.3dshapes/SOT-23.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -644,7 +642,7 @@
       (net 1 "/GND1"))
     (pad "3" smd rect (at 1 0 90) (size 0.9 0.8) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 20 "/Green_L1"))
-    (model "${KISYS3DMOD}/Package_TO_SOT_SMD.3dshapes/SOT-23.step"
+    (model "${KISYS3DMOD}/TO_SOT_Packages_SMD.3dshapes/SOT-23.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -685,7 +683,7 @@
       (net 1 "/GND1"))
     (pad "3" smd rect (at 1 0) (size 0.9 0.8) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 19 "/Red_L1"))
-    (model "${KISYS3DMOD}/Package_TO_SOT_SMD.3dshapes/SOT-23.step"
+    (model "${KISYS3DMOD}/TO_SOT_Packages_SMD.3dshapes/SOT-23.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -720,11 +718,6 @@
       (net 21 "/CTRL_Red2"))
     (pad "6" smd rect (at 2.54 -2.54 135) (size 1.27 2.54) (layers "B.Cu" "B.Paste" "B.Mask")
       (net 22 "/CTRL_Green2"))
-    (model "/home/philipp/Dokumente/dev/PickAndPlace_Electronic/common/3D/micromatch_smd_6pin.step"
-      (offset (xyz -0.5 0 5))
-      (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
-    )
   )
 
   (module "Mounting_Holes:MountingHole_3.2mm_M3_DIN965_Pad" (layer "F.Cu") (tedit 56D1B4CB) (tstamp 5DEA1C41)
@@ -799,10 +792,10 @@
       (net 20 "/Green_L1"))
     (pad "2" smd rect (at 1.5 0 180) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 38 "Net-(D40-Pad1)"))
-    (model "${KIPRJMOD}/../common/3D/PLCC-2.step"
+    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 90 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -838,10 +831,10 @@
       (net 19 "/Red_L1"))
     (pad "2" smd rect (at 1.5 0 180) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 37 "Net-(D39-Pad1)"))
-    (model "${KIPRJMOD}/../common/3D/PLCC-2.step"
+    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 90 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -877,10 +870,10 @@
       (net 18 "/Green_L2"))
     (pad "2" smd rect (at 1.5 0 180) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 36 "Net-(D38-Pad1)"))
-    (model "${KIPRJMOD}/../common/3D/PLCC-2.step"
+    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 90 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -916,10 +909,10 @@
       (net 17 "/Red_L2"))
     (pad "2" smd rect (at 1.5 0 180) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 35 "Net-(D37-Pad1)"))
-    (model "${KIPRJMOD}/../common/3D/PLCC-2.step"
+    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 90 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -955,10 +948,10 @@
       (net 38 "Net-(D40-Pad1)"))
     (pad "2" smd rect (at 1.5 0 315) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 34 "Net-(D32-Pad1)"))
-    (model "${KIPRJMOD}/../common/3D/PLCC-2.step"
+    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 90 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -994,10 +987,10 @@
       (net 37 "Net-(D39-Pad1)"))
     (pad "2" smd rect (at 1.5 0 225) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 33 "Net-(D31-Pad1)"))
-    (model "${KIPRJMOD}/../common/3D/PLCC-2.step"
+    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 90 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -1033,10 +1026,10 @@
       (net 36 "Net-(D38-Pad1)"))
     (pad "2" smd rect (at 1.5 0 225) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 16 "Net-(D30-Pad1)"))
-    (model "${KIPRJMOD}/../common/3D/PLCC-2.step"
+    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 90 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -1072,10 +1065,10 @@
       (net 35 "Net-(D37-Pad1)"))
     (pad "2" smd rect (at 1.5 0 135) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 15 "Net-(D29-Pad1)"))
-    (model "${KIPRJMOD}/../common/3D/PLCC-2.step"
+    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 90 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -1111,10 +1104,10 @@
       (net 34 "Net-(D32-Pad1)"))
     (pad "2" smd rect (at 1.5 0 270) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 14 "Net-(D24-Pad1)"))
-    (model "${KIPRJMOD}/../common/3D/PLCC-2.step"
+    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 90 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -1150,10 +1143,10 @@
       (net 33 "Net-(D31-Pad1)"))
     (pad "2" smd rect (at 1.5 0 270) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 13 "Net-(D23-Pad1)"))
-    (model "${KIPRJMOD}/../common/3D/PLCC-2.step"
+    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 90 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -1189,10 +1182,10 @@
       (net 16 "Net-(D30-Pad1)"))
     (pad "2" smd rect (at 1.5 0 90) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 12 "Net-(D22-Pad1)"))
-    (model "${KIPRJMOD}/../common/3D/PLCC-2.step"
+    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 90 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -1228,10 +1221,10 @@
       (net 15 "Net-(D29-Pad1)"))
     (pad "2" smd rect (at 1.5 0 90) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 11 "Net-(D21-Pad1)"))
-    (model "${KIPRJMOD}/../common/3D/PLCC-2.step"
+    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 90 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -1267,10 +1260,10 @@
       (net 14 "Net-(D24-Pad1)"))
     (pad "2" smd rect (at 1.5 0 270) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 10 "Net-(D16-Pad1)"))
-    (model "${KIPRJMOD}/../common/3D/PLCC-2.step"
+    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 90 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -1306,10 +1299,10 @@
       (net 13 "Net-(D23-Pad1)"))
     (pad "2" smd rect (at 1.5 0 270) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 9 "Net-(D15-Pad1)"))
-    (model "${KIPRJMOD}/../common/3D/PLCC-2.step"
+    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 90 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -1345,10 +1338,10 @@
       (net 12 "Net-(D22-Pad1)"))
     (pad "2" smd rect (at 1.5 0 90) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 8 "Net-(D14-Pad1)"))
-    (model "${KIPRJMOD}/../common/3D/PLCC-2.step"
+    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 90 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -1384,10 +1377,10 @@
       (net 11 "Net-(D21-Pad1)"))
     (pad "2" smd rect (at 1.5 0 90) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 7 "Net-(D13-Pad1)"))
-    (model "${KIPRJMOD}/../common/3D/PLCC-2.step"
+    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 90 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -1423,10 +1416,10 @@
       (net 10 "Net-(D16-Pad1)"))
     (pad "2" smd rect (at 1.5 0 45) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 31 "Net-(D16-Pad2)"))
-    (model "${KIPRJMOD}/../common/3D/PLCC-2.step"
+    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 90 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -1462,10 +1455,10 @@
       (net 9 "Net-(D15-Pad1)"))
     (pad "2" smd rect (at 1.5 0 315) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 6 "Net-(D15-Pad2)"))
-    (model "${KIPRJMOD}/../common/3D/PLCC-2.step"
+    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 90 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -1501,10 +1494,10 @@
       (net 8 "Net-(D14-Pad1)"))
     (pad "2" smd rect (at 1.5 0 135) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 5 "Net-(D14-Pad2)"))
-    (model "${KIPRJMOD}/../common/3D/PLCC-2.step"
+    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 90 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -1540,10 +1533,10 @@
       (net 7 "Net-(D13-Pad1)"))
     (pad "2" smd rect (at 1.5 0 45) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 4 "Net-(D13-Pad2)"))
-    (model "${KIPRJMOD}/../common/3D/PLCC-2.step"
+    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 90 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -1579,10 +1572,10 @@
       (net 31 "Net-(D16-Pad2)"))
     (pad "2" smd rect (at 1.5 0) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 32 "Net-(D8-Pad2)"))
-    (model "${KIPRJMOD}/../common/3D/PLCC-2.step"
+    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 90 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -1618,10 +1611,10 @@
       (net 6 "Net-(D15-Pad2)"))
     (pad "2" smd rect (at 1.5 0) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 30 "Net-(D7-Pad2)"))
-    (model "${KIPRJMOD}/../common/3D/PLCC-2.step"
+    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 90 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -1657,10 +1650,10 @@
       (net 5 "Net-(D14-Pad2)"))
     (pad "2" smd rect (at 1.5 0) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 3 "Net-(D6-Pad2)"))
-    (model "${KIPRJMOD}/../common/3D/PLCC-2.step"
+    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 90 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -1696,10 +1689,10 @@
       (net 4 "Net-(D13-Pad2)"))
     (pad "2" smd rect (at 1.5 0) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 2 "Net-(D5-Pad2)"))
-    (model "${KIPRJMOD}/../common/3D/PLCC-2.step"
+    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 90 0 90))
+      (rotate (xyz 0 0 0))
     )
   )
 
@@ -2670,30 +2663,26 @@
         (xy 123.148694 76.30166) (xy 121.992549 75.145514) (xy 121.722748 74.989745) (xy 121.494322 74.96976) (xy 121.278358 75.027628)
         (xy 121.104378 75.149449) (xy 120.07264 76.181187) (xy 120.084 76.136942) (xy 120.084 75.863058) (xy 120.015888 75.597782)
         (xy 119.883944 75.357776) (xy 119.69646 75.158126) (xy 119.465213 75.011372) (xy 119.204736 74.926738) (xy 118.931394 74.90954)
-        (xy 118.662363 74.960862) (xy 118.414547 75.077474) (xy 118.306195 75.167111) (xy 118.260755 75.145777) (xy 118.225993 75.140582)
-        (xy 118.191775 75.127755) (xy 118.089127 75.120127) (xy 118.061513 75.116) (xy 118.033605 75.116) (xy 117.939258 75.108989)
-        (xy 117.906414 75.116) (xy 117.012518 75.116) (xy 116.878795 75.115183) (xy 116.815008 75.133414) (xy 116.749342 75.142818)
-        (xy 116.693894 75.168028) (xy 116.635328 75.184766) (xy 116.579224 75.220165) (xy 116.518835 75.247623) (xy 116.472693 75.287382)
-        (xy 116.421178 75.319886) (xy 116.377266 75.369607) (xy 116.327008 75.412912) (xy 116.297678 75.458163) (xy 116.133412 75.458163)
-        (xy 115.832489 75.538795) (xy 115.656835 75.686185) (xy 115.545044 75.879814) (xy 115.508163 76.088976) (xy 115.508163 77.016588)
-        (xy 115.588795 77.317512) (xy 115.736185 77.493165) (xy 115.929814 77.604956) (xy 116.138976 77.641837) (xy 117.866588 77.641837)
-        (xy 118.167512 77.561205) (xy 118.245555 77.495719) (xy 118.351158 77.601323) (xy 118.412911 77.672992) (xy 118.441095 77.691259)
-        (xy 119.116 78.366165) (xy 119.116 85.219389) (xy 114.634 80.73739) (xy 114.634 78.988976) (xy 115.508163 78.988976)
-        (xy 115.508163 79.916588) (xy 115.588795 80.217512) (xy 115.736185 80.393165) (xy 115.929814 80.504956) (xy 116.138976 80.541837)
-        (xy 116.176606 80.541837) (xy 116.212605 80.60419) (xy 116.39581 80.787395) (xy 116.620191 80.916941) (xy 116.870454 80.983999)
-        (xy 117.129546 80.983999) (xy 117.379809 80.916941) (xy 117.60419 80.787395) (xy 117.787395 80.60419) (xy 117.823394 80.541837)
-        (xy 117.866588 80.541837) (xy 118.167512 80.461205) (xy 118.343165 80.313815) (xy 118.454956 80.120186) (xy 118.491837 79.911024)
-        (xy 118.491837 78.983412) (xy 118.411205 78.682489) (xy 118.263815 78.506835) (xy 118.070186 78.395044) (xy 117.861024 78.358163)
-        (xy 116.133412 78.358163) (xy 115.832489 78.438795) (xy 115.656835 78.586185) (xy 115.545044 78.779814) (xy 115.508163 78.988976)
-        (xy 114.634 78.988976) (xy 114.634 71.700683) (xy 114.637188 71.720925) (xy 114.736606 72.085587) (xy 114.87544 72.437137)
-        (xy 115.052012 72.77133) (xy 115.264191 73.084128) (xy 115.509413 73.371754) (xy 115.784717 73.630734) (xy 116.086777 73.857938)
-        (xy 116.411945 74.050626) (xy 116.756293 74.206468) (xy 117.115663 74.323581) (xy 117.485715 74.400552) (xy 117.861978 74.43645)
-        (xy 118.239908 74.430843) (xy 118.61494 74.383798) (xy 118.982545 74.295882) (xy 119.338283 74.16816) (xy 119.677857 74.002172)
-        (xy 119.997165 73.799923) (xy 120.292352 73.563856) (xy 120.559851 73.296823) (xy 120.796433 73.00205) (xy 120.999239 72.683094)
-        (xy 121.165819 72.343811) (xy 121.294163 71.988296) (xy 121.38272 71.620845) (xy 121.430481 71.245403) (xy 121.434242 70.814504)
-        (xy 121.393039 70.438286) (xy 121.31091 70.069346) (xy 121.18879 69.711645) (xy 121.028156 69.369506) (xy 120.830947 69.04706)
-        (xy 120.599547 68.748202) (xy 120.336748 68.476541) (xy 120.045727 68.235359) (xy 119.729996 68.027569) (xy 119.393371 67.855679)
-        (xy 119.039917 67.721767) (xy 118.699321 67.634) (xy 127.737391 67.634)
+        (xy 118.662363 74.960862) (xy 118.414547 75.077474) (xy 118.203518 75.252054) (xy 118.042534 75.473628) (xy 118.036413 75.489089)
+        (xy 117.861024 75.458163) (xy 116.133412 75.458163) (xy 115.832489 75.538795) (xy 115.656835 75.686185) (xy 115.545044 75.879814)
+        (xy 115.508163 76.088976) (xy 115.508163 77.016588) (xy 115.588795 77.317512) (xy 115.736185 77.493165) (xy 115.929814 77.604956)
+        (xy 116.138976 77.641837) (xy 117.866588 77.641837) (xy 118.167512 77.561205) (xy 118.245556 77.495719) (xy 118.351146 77.601309)
+        (xy 118.412911 77.672992) (xy 118.441095 77.691259) (xy 119.116 78.366165) (xy 119.116 85.219389) (xy 114.634 80.73739)
+        (xy 114.634 78.988976) (xy 115.508163 78.988976) (xy 115.508163 79.916588) (xy 115.588795 80.217512) (xy 115.736185 80.393165)
+        (xy 115.929814 80.504956) (xy 116.138976 80.541837) (xy 116.176606 80.541837) (xy 116.212605 80.60419) (xy 116.39581 80.787395)
+        (xy 116.620191 80.916941) (xy 116.870454 80.983999) (xy 117.129546 80.983999) (xy 117.379809 80.916941) (xy 117.60419 80.787395)
+        (xy 117.787395 80.60419) (xy 117.823394 80.541837) (xy 117.866588 80.541837) (xy 118.167512 80.461205) (xy 118.343165 80.313815)
+        (xy 118.454956 80.120186) (xy 118.491837 79.911024) (xy 118.491837 78.983412) (xy 118.411205 78.682489) (xy 118.263815 78.506835)
+        (xy 118.070186 78.395044) (xy 117.861024 78.358163) (xy 116.133412 78.358163) (xy 115.832489 78.438795) (xy 115.656835 78.586185)
+        (xy 115.545044 78.779814) (xy 115.508163 78.988976) (xy 114.634 78.988976) (xy 114.634 71.700683) (xy 114.637188 71.720925)
+        (xy 114.736606 72.085587) (xy 114.87544 72.437137) (xy 115.052012 72.77133) (xy 115.264191 73.084128) (xy 115.509413 73.371754)
+        (xy 115.784717 73.630734) (xy 116.086777 73.857938) (xy 116.411945 74.050626) (xy 116.756293 74.206468) (xy 117.115663 74.323581)
+        (xy 117.485715 74.400552) (xy 117.861978 74.43645) (xy 118.239908 74.430843) (xy 118.61494 74.383798) (xy 118.982545 74.295882)
+        (xy 119.338283 74.16816) (xy 119.677857 74.002172) (xy 119.997165 73.799923) (xy 120.292352 73.563856) (xy 120.559851 73.296823)
+        (xy 120.796433 73.00205) (xy 120.999239 72.683094) (xy 121.165819 72.343811) (xy 121.294163 71.988296) (xy 121.38272 71.620845)
+        (xy 121.430481 71.245403) (xy 121.434242 70.814504) (xy 121.393039 70.438286) (xy 121.31091 70.069346) (xy 121.18879 69.711645)
+        (xy 121.028156 69.369506) (xy 120.830947 69.04706) (xy 120.599547 68.748202) (xy 120.336748 68.476541) (xy 120.045727 68.235359)
+        (xy 119.729996 68.027569) (xy 119.393371 67.855679) (xy 119.039917 67.721767) (xy 118.699321 67.634) (xy 127.737391 67.634)
       )
     )
     (filled_polygon
