@@ -241,7 +241,7 @@ F 3 "" H 3200 5125 50  0000 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L DiodesInc:AL8808 IC3
+L Led-rescue:AL8808-DiodesInc IC3
 U 1 1 5DDFDEEE
 P 1875 1875
 F 0 "IC3" H 1775 2150 60  0000 C CNN
@@ -252,7 +252,7 @@ F 3 "" H 1875 1875 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L DiodesInc:AL8808 IC1
+L Led-rescue:AL8808-DiodesInc IC1
 U 1 1 5DDFDF6F
 P 1850 2975
 F 0 "IC1" H 1750 3250 60  0000 C CNN
@@ -439,7 +439,7 @@ F 3 "" H 975 4150 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L DiodesInc:AL8808 IC2
+L Led-rescue:AL8808-DiodesInc IC2
 U 1 1 5DDFEE92
 P 1850 4025
 F 0 "IC2" H 1750 4300 60  0000 C CNN
@@ -1048,7 +1048,7 @@ F 3 "" H 5900 4475 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L conn:CONN_01X04 P1
+L Led-rescue:CONN_01X04-conn P1
 U 1 1 5DE548B1
 P 2375 4950
 F 0 "P1" H 2375 5200 50  0000 C CNN
@@ -1110,7 +1110,7 @@ F 3 "~" H 2500 4175 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L conn:CONN_01X03 P2
+L Led-rescue:CONN_01X03-conn P2
 U 1 1 5DE96F1B
 P 4175 5900
 F 0 "P2" H 4092 5575 50  0000 C CNN
@@ -1197,4 +1197,6 @@ $EndComp
 Wire Wire Line
 	4950 6300 4950 6250
 Connection ~ 4950 6250
+Text Notes 8000 2300 0    50   ~ 0
+vom Stecker aus runter:\n10% Power:\n1. 9,31mV\n2. 9,32mV\n3. 9,49mV\n\n30% Power:\n1. 27,85mV\n2. 27,87mV\n3. 28,65mV
 $EndSCHEMATC

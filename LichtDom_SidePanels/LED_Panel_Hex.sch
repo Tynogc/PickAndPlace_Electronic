@@ -159,7 +159,7 @@ CTRL_Green2
 Text Label 7750 3125 2    47   ~ 0
 CTRL_Red2
 $Comp
-L conn:CONN_02X02 P1
+L LED_Panel_Hex-rescue:CONN_02X02-conn P1
 U 1 1 5DE4CF3A
 P 8000 3075
 F 0 "P1" H 8000 3225 50  0000 C CNN
@@ -528,7 +528,7 @@ CTRL_Green1
 Text Label 7475 1450 2    47   ~ 0
 CTRL_Red1
 $Comp
-L conn:CONN_02X02 P2
+L LED_Panel_Hex-rescue:CONN_02X02-conn P2
 U 1 1 5DE4E6B1
 P 7725 1400
 F 0 "P2" H 7725 1550 50  0000 C CNN
@@ -655,7 +655,7 @@ CTRL_Green2
 Text Label 9050 3400 2    47   ~ 0
 Green_L2
 $Comp
-L Mechanical:MountingHole H1
+L LED_Panel_Hex-rescue:MountingHole-Mechanical H1
 U 1 1 5DE61D4E
 P 10375 1475
 F 0 "H1" H 10475 1521 50  0000 L CNN
@@ -666,7 +666,7 @@ F 3 "~" H 10375 1475 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Mechanical:MountingHole H2
+L LED_Panel_Hex-rescue:MountingHole-Mechanical H2
 U 1 1 5DE61D9D
 P 10375 1675
 F 0 "H2" H 10475 1721 50  0000 L CNN

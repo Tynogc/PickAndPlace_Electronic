@@ -1,4 +1,4 @@
-(kicad_pcb (version 20191123) (host pcbnew "(5.99.0-446-g2a3d4ffe8)")
+(kicad_pcb (version 20191123) (host pcbnew "(5.99.0-588-g5c0656d97)")
 
   (general
     (thickness 1.6)
@@ -46,7 +46,7 @@
       (copper_finish "None")
       (dielectric_constraints no)
     )
-    (last_trace_width 0.5)
+    (last_trace_width 0.25)
     (user_trace_width 0.25)
     (user_trace_width 0.5)
     (trace_clearance 0.25)
@@ -73,6 +73,8 @@
       (silk_text_dims (size 1 1) (thickness 0.15))
       (other_layers_line_width 0.1)
       (other_layers_text_dims (size 1 1) (thickness 0.15))
+      (dimension_units 0)
+      (dimension_precision 1)
     )
     (pad_size 1.524 1.524)
     (pad_drill 0.762)
@@ -230,7 +232,7 @@
     (tags "resistor 0805")
     (path "/5DE523D4")
     (attr smd)
-    (fp_text reference "R10" (at 0 -1.65 90) (layer "F.SilkS")
+    (fp_text reference "R10" (at -3.25 -0.25 90) (layer "F.SilkS")
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_text value "R" (at 0 1.75 90) (layer "F.Fab")
@@ -266,7 +268,7 @@
     (tags "resistor 0805")
     (path "/5DE523BB")
     (attr smd)
-    (fp_text reference "R9" (at 0 -1.65 90) (layer "F.SilkS")
+    (fp_text reference "R9" (at -2.75 -0.25 90) (layer "F.SilkS")
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_text value "R" (at 0 1.75 90) (layer "F.Fab")
@@ -302,7 +304,7 @@
     (tags "resistor 0805")
     (path "/5DE51A9C")
     (attr smd)
-    (fp_text reference "R8" (at 0 1.65 90) (layer "B.SilkS")
+    (fp_text reference "R8" (at 0 -1.75 90) (layer "B.SilkS")
       (effects (font (size 1 1) (thickness 0.15)) (justify mirror))
     )
     (fp_text value "R" (at 0 -1.75 90) (layer "B.Fab")
@@ -338,7 +340,7 @@
     (tags "resistor 0805")
     (path "/5DE50E36")
     (attr smd)
-    (fp_text reference "R7" (at 0 1.65 90) (layer "B.SilkS")
+    (fp_text reference "R7" (at 0 -2 90) (layer "B.SilkS")
       (effects (font (size 1 1) (thickness 0.15)) (justify mirror))
     )
     (fp_text value "R" (at 0 -1.75 90) (layer "B.Fab")
@@ -410,7 +412,7 @@
     (tags "resistor 0805")
     (path "/5DE4DE63")
     (attr smd)
-    (fp_text reference "R4" (at 0 1.65 90) (layer "B.SilkS")
+    (fp_text reference "R4" (at 1 -1.75 90) (layer "B.SilkS")
       (effects (font (size 1 1) (thickness 0.15)) (justify mirror))
     )
     (fp_text value "270" (at 0 -1.75 90) (layer "B.Fab")
@@ -446,7 +448,7 @@
     (tags "resistor 0805")
     (path "/5DE4D4F9")
     (attr smd)
-    (fp_text reference "R2" (at 0 -1.65) (layer "F.SilkS")
+    (fp_text reference "R2" (at -3 0) (layer "F.SilkS")
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_text value "270" (at 0 1.75) (layer "F.Fab")
@@ -502,6 +504,11 @@
       (net 48 "/CTRL_Green1"))
     (pad "5" smd rect (at 1.27 2.54 270) (size 1.27 2.54) (layers "B.Cu" "B.Paste" "B.Mask"))
     (pad "6" smd rect (at 2.54 -2.54 270) (size 1.27 2.54) (layers "B.Cu" "B.Paste" "B.Mask"))
+    (model "/home/philipp/Dokumente/dev/PickAndPlace_Electronic/common/3D/micromatch_smd_6pin.step"
+      (offset (xyz -0.5 0 5.5))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module "Toni:micro_match3x2" (layer "B.Cu") (tedit 5265A2FB) (tstamp 5DE57DD6)
@@ -530,6 +537,11 @@
       (net 45 "/CTRL_Green2"))
     (pad "5" smd rect (at 1.27 2.54 270) (size 1.27 2.54) (layers "B.Cu" "B.Paste" "B.Mask"))
     (pad "6" smd rect (at 2.54 -2.54 270) (size 1.27 2.54) (layers "B.Cu" "B.Paste" "B.Mask"))
+    (model "/home/philipp/Dokumente/dev/PickAndPlace_Electronic/common/3D/micromatch_smd_6pin.step"
+      (offset (xyz -0.5 0 5.5))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module "Mounting_Holes:MountingHole_3.2mm_M3_DIN965_Pad" (layer "F.Cu") (tedit 56D1B4CB) (tstamp 5DE56D25)
@@ -558,7 +570,7 @@
     (tags "mounting hole 3.2mm m3 din965")
     (path "/5DE61D9D")
     (attr virtual)
-    (fp_text reference "H2" (at 2.5 -3.25) (layer "F.SilkS")
+    (fp_text reference "H2" (at 3.25 2.75) (layer "F.SilkS")
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_text value "MountingHole" (at 0 3.8) (layer "F.Fab")
@@ -604,10 +616,10 @@
       (net 3 "Net-(D1-Pad1)"))
     (pad "2" smd rect (at 1.5 0) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 4 "Net-(D1-Pad2)"))
-    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
+    (model "/home/philipp/Dokumente/dev/PickAndPlace_Electronic/common/3D/PLCC-2.step"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 90 0 90))
     )
   )
 
@@ -643,7 +655,7 @@
       (net 5 "Net-(D2-Pad1)"))
     (pad "2" smd rect (at 1.5 0) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 6 "Net-(D2-Pad2)"))
-    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
+    (model "${KISYS3DMOD}/LED.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -682,7 +694,7 @@
       (net 7 "Net-(D3-Pad1)"))
     (pad "2" smd rect (at 1.5 0 90) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 8 "Net-(D3-Pad2)"))
-    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
+    (model "${KISYS3DMOD}/LED.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -721,7 +733,7 @@
       (net 9 "Net-(D10-Pad2)"))
     (pad "2" smd rect (at 1.5 0 90) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 10 "Net-(D4-Pad2)"))
-    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
+    (model "${KISYS3DMOD}/LED.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -760,7 +772,7 @@
       (net 11 "Net-(D11-Pad2)"))
     (pad "2" smd rect (at 1.5 0 90) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 12 "Net-(D5-Pad2)"))
-    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
+    (model "${KISYS3DMOD}/LED.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -799,7 +811,7 @@
       (net 13 "Net-(D12-Pad2)"))
     (pad "2" smd rect (at 1.5 0 90) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 14 "Net-(D6-Pad2)"))
-    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
+    (model "${KISYS3DMOD}/LED.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -838,7 +850,7 @@
       (net 15 "Net-(D13-Pad2)"))
     (pad "2" smd rect (at 1.5 0) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 3 "Net-(D1-Pad1)"))
-    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
+    (model "${KISYS3DMOD}/LED.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -877,7 +889,7 @@
       (net 16 "Net-(D14-Pad2)"))
     (pad "2" smd rect (at 1.5 0) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 5 "Net-(D2-Pad1)"))
-    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
+    (model "${KISYS3DMOD}/LED.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -916,7 +928,7 @@
       (net 17 "Net-(D15-Pad2)"))
     (pad "2" smd rect (at 1.5 0 90) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 7 "Net-(D3-Pad1)"))
-    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
+    (model "${KISYS3DMOD}/LED.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -955,7 +967,7 @@
       (net 18 "Net-(D10-Pad1)"))
     (pad "2" smd rect (at 1.5 0 90) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 9 "Net-(D10-Pad2)"))
-    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
+    (model "${KISYS3DMOD}/LED.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -994,7 +1006,7 @@
       (net 19 "Net-(D11-Pad1)"))
     (pad "2" smd rect (at 1.5 0 90) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 11 "Net-(D11-Pad2)"))
-    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
+    (model "${KISYS3DMOD}/LED.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1033,7 +1045,7 @@
       (net 20 "Net-(D12-Pad1)"))
     (pad "2" smd rect (at 1.5 0 90) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 13 "Net-(D12-Pad2)"))
-    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
+    (model "${KISYS3DMOD}/LED.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1072,7 +1084,7 @@
       (net 21 "Net-(D13-Pad1)"))
     (pad "2" smd rect (at 1.5 0) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 15 "Net-(D13-Pad2)"))
-    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
+    (model "${KISYS3DMOD}/LED.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1111,7 +1123,7 @@
       (net 22 "Net-(D14-Pad1)"))
     (pad "2" smd rect (at 1.5 0) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 16 "Net-(D14-Pad2)"))
-    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
+    (model "${KISYS3DMOD}/LED.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1150,7 +1162,7 @@
       (net 23 "Net-(D15-Pad1)"))
     (pad "2" smd rect (at 1.5 0 90) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 17 "Net-(D15-Pad2)"))
-    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
+    (model "${KISYS3DMOD}/LED.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1189,7 +1201,7 @@
       (net 24 "Net-(D16-Pad1)"))
     (pad "2" smd rect (at 1.5 0 90) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 18 "Net-(D10-Pad1)"))
-    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
+    (model "${KISYS3DMOD}/LED.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1228,7 +1240,7 @@
       (net 25 "Net-(D17-Pad1)"))
     (pad "2" smd rect (at 1.5 0 90) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 19 "Net-(D11-Pad1)"))
-    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
+    (model "${KISYS3DMOD}/LED.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1267,7 +1279,7 @@
       (net 26 "Net-(D18-Pad1)"))
     (pad "2" smd rect (at 1.5 0 90) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 20 "Net-(D12-Pad1)"))
-    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
+    (model "${KISYS3DMOD}/LED.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1306,7 +1318,7 @@
       (net 27 "Net-(D19-Pad1)"))
     (pad "2" smd rect (at 1.5 0) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 21 "Net-(D13-Pad1)"))
-    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
+    (model "${KISYS3DMOD}/LED.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1345,7 +1357,7 @@
       (net 28 "Net-(D20-Pad1)"))
     (pad "2" smd rect (at 1.5 0) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 22 "Net-(D14-Pad1)"))
-    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
+    (model "${KISYS3DMOD}/LED.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1384,7 +1396,7 @@
       (net 29 "Net-(D21-Pad1)"))
     (pad "2" smd rect (at 1.5 0 90) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 23 "Net-(D15-Pad1)"))
-    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
+    (model "${KISYS3DMOD}/LED.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1423,7 +1435,7 @@
       (net 30 "Net-(D22-Pad1)"))
     (pad "2" smd rect (at 1.5 0 90) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 24 "Net-(D16-Pad1)"))
-    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
+    (model "${KISYS3DMOD}/LED.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1462,7 +1474,7 @@
       (net 31 "Net-(D23-Pad1)"))
     (pad "2" smd rect (at 1.5 0 90) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 25 "Net-(D17-Pad1)"))
-    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
+    (model "${KISYS3DMOD}/LED.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1501,7 +1513,7 @@
       (net 32 "Net-(D24-Pad1)"))
     (pad "2" smd rect (at 1.5 0 90) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 26 "Net-(D18-Pad1)"))
-    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
+    (model "${KISYS3DMOD}/LED.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1540,7 +1552,7 @@
       (net 33 "Net-(D25-Pad1)"))
     (pad "2" smd rect (at 1.5 0) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 27 "Net-(D19-Pad1)"))
-    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
+    (model "${KISYS3DMOD}/LED.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1579,7 +1591,7 @@
       (net 34 "Net-(D26-Pad1)"))
     (pad "2" smd rect (at 1.5 0) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 28 "Net-(D20-Pad1)"))
-    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
+    (model "${KISYS3DMOD}/LED.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1618,7 +1630,7 @@
       (net 35 "Net-(D27-Pad1)"))
     (pad "2" smd rect (at 1.5 0 90) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 29 "Net-(D21-Pad1)"))
-    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
+    (model "${KISYS3DMOD}/LED.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1657,7 +1669,7 @@
       (net 36 "Net-(D28-Pad1)"))
     (pad "2" smd rect (at 1.5 0 90) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 30 "Net-(D22-Pad1)"))
-    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
+    (model "${KISYS3DMOD}/LED.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1696,7 +1708,7 @@
       (net 37 "Net-(D29-Pad1)"))
     (pad "2" smd rect (at 1.5 0 90) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 31 "Net-(D23-Pad1)"))
-    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
+    (model "${KISYS3DMOD}/LED.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1735,7 +1747,7 @@
       (net 38 "Net-(D30-Pad1)"))
     (pad "2" smd rect (at 1.5 0 90) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 32 "Net-(D24-Pad1)"))
-    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
+    (model "${KISYS3DMOD}/LED.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1774,7 +1786,7 @@
       (net 39 "/Red_L2"))
     (pad "2" smd rect (at 1.5 0) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 33 "Net-(D25-Pad1)"))
-    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
+    (model "${KISYS3DMOD}/LED.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1813,7 +1825,7 @@
       (net 40 "/Green_L2"))
     (pad "2" smd rect (at 1.5 0) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 34 "Net-(D26-Pad1)"))
-    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
+    (model "${KISYS3DMOD}/LED.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1852,7 +1864,7 @@
       (net 41 "/Red_L1"))
     (pad "2" smd rect (at 1.5 0 90) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 35 "Net-(D27-Pad1)"))
-    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
+    (model "${KISYS3DMOD}/LED.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1891,7 +1903,7 @@
       (net 42 "/Green_L1"))
     (pad "2" smd rect (at 1.5 0 90) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 36 "Net-(D28-Pad1)"))
-    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
+    (model "${KISYS3DMOD}/LED.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1930,7 +1942,7 @@
       (net 41 "/Red_L1"))
     (pad "2" smd rect (at 1.5 0 90) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 37 "Net-(D29-Pad1)"))
-    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
+    (model "${KISYS3DMOD}/LED.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1969,7 +1981,7 @@
       (net 42 "/Green_L1"))
     (pad "2" smd rect (at 1.5 0 90) (size 1.5 2.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 38 "Net-(D30-Pad1)"))
-    (model "${KISYS3DMOD}/LEDs.3dshapes/LED_PLCC-2.wrl"
+    (model "${KISYS3DMOD}/LED.3dshapes/LED_PLCC-2.wrl"
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -2064,7 +2076,7 @@
     (tags "SOT-23")
     (path "/5DE523B5")
     (attr smd)
-    (fp_text reference "Q3" (at 0 -2.5 180) (layer "F.SilkS")
+    (fp_text reference "Q3" (at -3 0 270) (layer "F.SilkS")
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_text value "Q_NPN_BEC" (at 0 2.5 180) (layer "F.Fab")
@@ -2105,7 +2117,7 @@
     (tags "SOT-23")
     (path "/5DE523CE")
     (attr smd)
-    (fp_text reference "Q4" (at 0 -2.5 180) (layer "F.SilkS")
+    (fp_text reference "Q4" (at -3 0 270) (layer "F.SilkS")
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_text value "Q_NPN_BEC" (at 0 2.5 180) (layer "F.Fab")
@@ -2146,7 +2158,7 @@
     (tags "resistor 1206")
     (path "/5DE4D584")
     (attr smd)
-    (fp_text reference "R1" (at -3.25 -1.5 180) (layer "F.SilkS")
+    (fp_text reference "R1" (at 0 2 180) (layer "F.SilkS")
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_text value "570" (at 0 1.95 180) (layer "F.Fab")

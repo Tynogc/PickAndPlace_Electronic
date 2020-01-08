@@ -24,4 +24,5 @@
   (lib (name "contrib")(type "Legacy")(uri "${KICAD_SYMBOL_DIR}/contrib.lib")(options "")(descr ""))
   (lib (name "valves")(type "Legacy")(uri "${KICAD_SYMBOL_DIR}/valves.lib")(options "")(descr ""))
   (lib (name "DiodesInc")(type "Legacy")(uri "C:/Users/Sven Schneider/Documents/KiCad/Libs/Layout/DiodesInc.lib")(options "")(descr ""))
+  (lib (name "Led-rescue")(type "Legacy")(uri "${KIPRJMOD}/Led-rescue.lib")(options "")(descr ""))
 )
