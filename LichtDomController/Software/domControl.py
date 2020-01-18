@@ -14,9 +14,13 @@ import spidev
 import ctypes
 c_uint8 = ctypes.c_uint8
 
+import RPi.GPIO as gpio
 
-#serial = i2c(port=1, address=0x3C)
-#oled = ssd1306(serial, rotate=2)
+import SocketServer
+
+
+serial = i2c(port=1, address=0x3C)
+oled = ssd1306(serial, rotate=2)
 speicher = ""
 
 # SPI
@@ -45,12 +49,9 @@ class ledstruktur(ctypes.LittleEndianStructure):
 class Flags(ctypes.Union):  _fields_ = [("struktur", ledstruktur), ("asUint8", c_uint8 * 3)]
 
 leds = Flags()
-leds.struktur.O45G = 1
-leds.struktur.W00R = 1
+#leds.struktur.O45G = 1
 
-print(leds.asUint8[0])
-print(leds.asUint8[1])
-print(leds.asUint8[2])
+
 
 
 def readRam():
@@ -96,7 +97,7 @@ def printOled(ip, rom, ram, th, status=0):
         draw.text((5, 35), ip, fill="white")
         draw.text((5, 45), th, fill="white")
 
-def controlLeds(controlword):
+def controlHW(controlword):
     # Unterscheidung des Testwortes nach Anfangsbuchstaben, dieser ist Eindeutig!
     laenge = len(controlword)
     ende = controlword[laenge-1:laenge]
@@ -117,7 +118,6 @@ def controlLeds(controlword):
     elif controlword[1] == 'F':
         print ("Lüfter")
 
-    spi.xfer([ledHigh, ledMed, ledLow])
 
 
 def disableAllLeds():
@@ -132,20 +132,51 @@ def testLeds():
         sleep(0.5)
 
 def controlFan(anaus = 0):
-    return
+    if anaus == 0:
+        gpio.output(17, gpio.LOW)
+    elif anaus == 1:
+        gpio.output(17, gpio.HIGH)
+
+
+class MyTCPHandler(SocketServer.StreamRequestHandler):
+
+    def handle(self):
+        # self.rfile is a file-like object created by the handler;
+        # we can now use e.g. readline() instead of raw recv() calls
+        self.data = self.rfile.readline().strip()
+        print("{} wrote:".format(self.client_address[0]))
+        print(self.data)
+
+        controlHW(self.data)
+        # Likewise, self.wfile is a file-like object used to write back
+        # to the client
+#        self.wfile.write(self.data.upper())
+
+
 
 if __name__ == '__main__':
     spi = spidev.SpiDev()
     spi.open(0, 0)
+    spi.max_speed_hz = 10000000
+    spi.mode = 0
+
+    gpio.setmode(gpio.BCM)
+    gpio.setup(17, gpio.OUT, initial=gpio.LOW)
+
+    HOST, PORT = "0.0.0.0", 1337
+
+    # Create the server, binding to localhost on port 1337
+    server = SocketServer.TCPServer((HOST, PORT), MyTCPHandler)
 
     print "mem:", readRam(), "MB"
     print "sd :", readSD(), "MB"
     print "IP: ", readIP()
     print "Core-Temperatur: ", readCoreTemp()
-   # printOled(readIP(), readSD(), readRam(), readCoreTemp(), 1)
-    testval = [leds.asUint8[2], leds.asUint8[1], leds.asUint8[0]]
-    print(testval)
-    testLeds()
+    printOled(readIP(), readSD(), readRam(), readCoreTemp(), 1)
 
-    sleep(10)
+    # Activate the server; this will keep running until you
+    # interrupt the program with Ctrl-C
+    server.serve_forever()
+
+    gpio.output(17, gpio.LOW)
     disableAllLeds()

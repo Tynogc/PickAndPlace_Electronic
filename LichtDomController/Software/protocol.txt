@@ -1,0 +1,16 @@
+Vorschlag für ein Protokoll zur Übertragung per Socket
+
+Ansteuerung der einzelnen Farbkanäle
+[R|G][01-12].[1|0]\r\n
+z.B. 
+Rote Led in Strang 4 wird eingeschaltet
+R04.1\r\n
+
+Ansteuerung WS2812 (jeder Kanal als HEX-Wert 8-Bit)
+[WS]RGB\r\n
+
+Ansteuerung mit jedem Kanal halbe Aussteuerung
+WS808080\r\n
+
+Ansteuerung des Lüfters:
+[F].[1|0]
