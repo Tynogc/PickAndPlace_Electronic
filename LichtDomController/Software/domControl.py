@@ -151,14 +151,13 @@ def controlHW(spi, controlword):
     # Unterscheidung des Testwortes nach Anfangsbuchstaben, dieser ist Eindeutig!
     laenge = len(controlword)
     if laenge == 6:
-        led_name = controlword[:4]
+        led_name = controlword[:4].decode("utf-8")
         if led_name in led_lut:
-            if controlword[5] == '1':
+            if controlword[5] == ord('1'):
                 leds.asUint32 |= 1 << led_lut[led_name]
-            else:
+            elif controlword[5] == ord('0') :
                 leds.asUint32 &= ~(1 << led_lut[led_name])
             controlLeds(spi, leds)
-
 
 def disableAllLeds(spi):
     # alles aus ist Stumpf 24 Bit Nullen
@@ -196,13 +195,13 @@ class NetworkHandler(socketserver.StreamRequestHandler):
                 logger.warning("Msg is too short")
                 break
             # Prüfen des Längenbytes auf ASCII Zahlenbereich
-            if not (0 < int(data[0]) < 10):
+            if not (0x2F < data[0] < 0x3A):
                 logger.warning("Keine ASCII Zahl {} als Längenangabe Type: {}".format(data[0], type(data[0])))
                 break
-            if len(data) - 1 != (int(data[0])):
+            if len(data) - 1 != (data[0] - 0x30):
                 logger.warning("Ungültige Längenangabe")
                 break
-            if data[1] != ',':
+            if data[1] != 44: # ','
                 logger.warning("Komma als Trennzeichen zwischen Länge und Nachricht nicht gefunden")
                 break
             data = data[2:]
